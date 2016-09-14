@@ -3,3 +3,8 @@
     background-position-y: -5px;
     background: url(../assets/images/lifesitevault.png) no-repeat;
 }
+
+div#grocery-list{
+	height: 35rem;
+	overflow-y: scroll;
+}

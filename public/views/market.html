@@ -1,0 +1,14 @@
+<div class="jumbotron text-center">
+	<h1>Grocery List</h1>
+
+    <p>Please build your grocery items below!</p>
+
+    <input type="text" ng-model="item_to_add">
+    <input type="submit" ng-click="addItem()" value="Add to list">
+
+</div>
+<div id="grocery-list" >
+	    <div ng-repeat="item in items">
+	    	<p>{{item}}</p>
+	    </div>
+    </div>
