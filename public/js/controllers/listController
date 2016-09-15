@@ -1,3 +1,0 @@
-angular.module('listController', []).controller('listController', function($scope) {
-   
-});
