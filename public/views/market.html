@@ -1,16 +1,23 @@
 <div class="jumbotron text-center">
+
+    <a href="/#/home" style="text-align:right;"><img src="/images/home.png" onclick="/home" alt="home_icon" width="50px" height="45px"></img></a>
 	<h1>Grocery List</h1>
-
-    <p>Please build your grocery items below!</p>
-
-    <input type="text" ng-model="item_to_add">
-    <input type="submit" ng-click="addItem(item_to_add)" value="Add to list">
+    <input type="text" id="item-input" ng-model="item_to_add">
+    <input type="submit" class="btn" id="submit-item" ng-click="addItem(item_to_add)" value="Add to list">
+	<div><input type="submit" class="btn" id="remove-list" ng-click="removeList()" value="Remove all items"></div>
+    
 
 </div>
 <div id="grocery-list" >
-	    <div id="items-list" ng-repeat="item in items">
-	    	<p>{{item[0]}}    {{item[1]}}</p>
-	    	<input type="submit" ng-click="incQuantity(item[0])" id='add-item' value="+"> 
-	    	<input type="submit" ng-click="decQuantity(item[0])" id='remove-item' value="-"> 
+	    <div class="items-list row" ng-repeat="item in items">
+	    	<p class="item">{{item[0]}}</p>
+	    	<div class="quantity row">
+	    		<input type="submit" ng-click="decQuantity(item[0])" class="decrease-item" value="-"> 
+	    		<p class="val">{{item[1]}}</p>
+	    		<input type="submit" ng-click="incQuantity(item[0])" class="increase-item" value="+"> 
+	    	</div>
+	    	<div class="remove">
+	    		<input type="submit" ng-click="removeItem(item[0])" class="remove-item btn" value="Remove"> 
+	    	</div>
 	    </div>
     </div>

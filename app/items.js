@@ -25,7 +25,11 @@ router.post('/fetchList', function(req, res){
 
 router.post('/remove_item/:name', function(req, res){
 	var name = req.params.name;
-	itemCtrl.delete({'name': name}, res);
+	if(name =="deleteAll"){
+		itemCtrl.deleteAll({}, res);
+	}else{
+		itemCtrl.delete({'name': name}, res);
+	}
 });
 
 module.exports = router;

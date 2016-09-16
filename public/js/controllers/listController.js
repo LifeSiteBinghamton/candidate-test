@@ -19,25 +19,38 @@ angular.module('listController', []).controller('listController', function($scop
 
 	$scope.incQuantity = function(item){
 		$http.post('/grocery-list/update_item/' + item + '/inc').then(function(response) {
-				$scope.updateList();
+			$scope.updateList();
 	    });
 	}
 
 	$scope.decQuantity = function(item){
 		$http.post('/grocery-list/update_item/' + item + '/dec').then(function(response) {
-				$scope.updateList();
+			$scope.updateList();
 	    });
 
 	}
 
+	$scope.removeItem = function(item){
+		$http.post('/grocery-list/remove_item/' + item).then(function(response){
+		});
+		$scope.updateList();
+	}
+
+	$scope.removeList = function(){
+		$http.post('/grocery-list/remove_item/deleteAll' ).then(function(response){
+			console.log(response);
+		});
+		$scope.updateList();
+	}
+
 	$scope.updateList = function(){
-		console.log("hey there");
 		$http.post('/grocery-list/fetchList').then(function(response){
 			$scope.items = response.data;
 		});
 	}
 
-	$scope.updateList();
+
+	
 	var itemIndex = function(name){
 		for(var i = 0; i < $scope.items.length; i++){
 			if ($scope.items[i][0] == name){
@@ -46,5 +59,5 @@ angular.module('listController', []).controller('listController', function($scop
 		}
 		return -1;
 	};
-	
+	$scope.updateList();
 });

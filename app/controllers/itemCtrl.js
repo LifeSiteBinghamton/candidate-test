@@ -72,5 +72,10 @@ module.exports = {
 			}
 			return item;
 		});
+	},
+	deleteAll: function(req, res){
+		itemModel.remove({}, function(err){
+			if(err) console.log(err);
+		});
 	}
 };
