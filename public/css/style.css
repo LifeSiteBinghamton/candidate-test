@@ -8,3 +8,9 @@ div#grocery-list{
 	height: 35rem;
 	overflow-y: scroll;
 }
+
+div#items-list{
+	display: flex;
+	flex-direction: row;
+	font-size: 30px;		
+}

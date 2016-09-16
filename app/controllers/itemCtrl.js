@@ -28,14 +28,31 @@ module.exports = {
 			}
 		});
 	},
-	updateQuantity: function(req, res){
-		itemModel.update({ name: req.name }, { $inc: { quantity: 1 }}, function(err){
+	increaseQuantity: function(req, res){
+		itemModel.update({ "name": req.name }, { $inc: { "quantity": 1 }}, function(err, a){
+			if(err){
+				return err;
+			} else{
+				return res.send(a);
+			}
+		});
+	},
+	decreaseQuantity: function(req, res){
+		itemModel.update({ "name": req.name }, { $inc: { "quantity": -1 }}, function(err){
+			if(err){
+				return err;
+			} else{
+				return true;
+			}
+		});
+		itemModel.update({ "name": req.name, "quantity": {$lt: 1} }, { $set: { "quantity": 1 }}, function(err){
 			if(err){
 				return err;
 			} else{
 				return res.send("Document updated.");
 			}
 		});
+
 	},
 	delete: function(req,res){
 		itemModel.remove({

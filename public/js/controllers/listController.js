@@ -1,23 +1,37 @@
 angular.module('listController', []).controller('listController', function($scope, $http) {
 	$scope.items = [];
-	$scope.addItem = function(){
-		var index = itemIndex($scope.item_to_add);
+	$scope.addItem = function(item){
+		var index = itemIndex(item);
 
 		if( index == -1){
 	     	$http({
 				  method: 'POST',
-				  url: './grocery-list/add_item/' + $scope.item_to_add
+				  url: './grocery-list/add_item/' + item
 				}).then(function successCallback(response) {
-					$scope.items.push([$scope.item_to_add, 1]);
+					$scope.items.push([item, 1]);
 				  }, function errorCallback(response) {
 				  	console.log(response);
 				  });
 		}else{
-			$http.post('./grocery-list/update_item/' + $scope.item_to_add).then(function(response) {
-				$scope.items[index][1] += 1;
-	    	});
+			$scope.incQuantity(item);
 		}
 	};
+
+	$scope.incQuantity = function(item){
+		var index = itemIndex(item);
+		$http.post('./grocery-list/update_item/' + item + '/inc').then(function(response) {
+				console.log(response);
+				$scope.items[index][1] += 1;
+	    });
+	}
+
+	$scope.decQuantity = function(item){
+		var index = itemIndex(item);
+		$http.post('./grocery-list/update_item/' + item + '/dec').then(function(response) {
+				if($scope.items[index][1] > 1) $scope.items[index][1] -= 1;
+	    });
+
+	}
 
 	var itemIndex = function(name){
 		for(var i = 0; i < $scope.items.length; i++){

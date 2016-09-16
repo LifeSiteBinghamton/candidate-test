@@ -4,11 +4,13 @@
     <p>Please build your grocery items below!</p>
 
     <input type="text" ng-model="item_to_add">
-    <input type="submit" ng-click="addItem()" value="Add to list">
+    <input type="submit" ng-click="addItem(item_to_add)" value="Add to list">
 
 </div>
 <div id="grocery-list" >
-	    <div ng-repeat="item in items">
+	    <div id="items-list" ng-repeat="item in items">
 	    	<p>{{item[0]}}    {{item[1]}}</p>
+	    	<input type="submit" ng-click="incQuantity(item[0])" id='add-item' value="+"> 
+	    	<input type="submit" ng-click="decQuantity(item[0])" id='remove-item' value="-"> 
 	    </div>
     </div>
