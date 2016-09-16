@@ -28,6 +28,15 @@ module.exports = {
 			}
 		});
 	},
+	findAll: function(req, res){
+		itemModel.find({}, function(err, data){
+			var items = [];
+			data.forEach(function(item){
+				items.push([item.name, item.quantity]);
+			});
+			res.send(items);
+		});
+	},
 	increaseQuantity: function(req, res){
 		itemModel.update({ "name": req.name }, { $inc: { "quantity": 1 }}, function(err, a){
 			if(err){

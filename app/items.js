@@ -19,8 +19,11 @@ router.post('/update_item/:name/:op', function(req, res){
 	}
 });
 
+router.post('/fetchList', function(req, res){
+	itemCtrl.findAll({}, res);
+});
 
-router.get('/remove_item/:name', function(req, res){
+router.post('/remove_item/:name', function(req, res){
 	var name = req.params.name;
 	itemCtrl.delete({'name': name}, res);
 });

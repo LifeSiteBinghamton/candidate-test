@@ -6,9 +6,9 @@ angular.module('listController', []).controller('listController', function($scop
 		if( index == -1){
 	     	$http({
 				  method: 'POST',
-				  url: './grocery-list/add_item/' + item
+				  url: '/grocery-list/add_item/' + item
 				}).then(function successCallback(response) {
-					$scope.items.push([item, 1]);
+					$scope.updateList();
 				  }, function errorCallback(response) {
 				  	console.log(response);
 				  });
@@ -18,21 +18,26 @@ angular.module('listController', []).controller('listController', function($scop
 	};
 
 	$scope.incQuantity = function(item){
-		var index = itemIndex(item);
-		$http.post('./grocery-list/update_item/' + item + '/inc').then(function(response) {
-				console.log(response);
-				$scope.items[index][1] += 1;
+		$http.post('/grocery-list/update_item/' + item + '/inc').then(function(response) {
+				$scope.updateList();
 	    });
 	}
 
 	$scope.decQuantity = function(item){
-		var index = itemIndex(item);
-		$http.post('./grocery-list/update_item/' + item + '/dec').then(function(response) {
-				if($scope.items[index][1] > 1) $scope.items[index][1] -= 1;
+		$http.post('/grocery-list/update_item/' + item + '/dec').then(function(response) {
+				$scope.updateList();
 	    });
 
 	}
 
+	$scope.updateList = function(){
+		console.log("hey there");
+		$http.post('/grocery-list/fetchList').then(function(response){
+			$scope.items = response.data;
+		});
+	}
+
+	$scope.updateList();
 	var itemIndex = function(name){
 		for(var i = 0; i < $scope.items.length; i++){
 			if ($scope.items[i][0] == name){
