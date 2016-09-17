@@ -4,16 +4,18 @@ var itemCtrl = require('./controllers/itemCtrl');
 
 
 
-router.post('/add_item/:name', function(req, res){
+router.post('/add_item/:name/:q', function(req, res){
 	var name = req.params.name;
-  	itemCtrl.findOrCreate({'name': name}, res);
+	var q = req.params.q;
+  	itemCtrl.findOrCreate({'name': name, "q": q}, res);
 });
 
-router.post('/update_item/:name/:op', function(req, res){
+router.post('/update_item/:name/:op/:q', function(req, res){
 	var name = req.params.name;
 	var op = req.params.op;
+	var q = req.params.q;
 	if(op == "inc"){
-		itemCtrl.increaseQuantity({'name': name}, res);
+		itemCtrl.increaseQuantity({'name': name, "q": q}, res);
 	}else{
 		itemCtrl.decreaseQuantity({'name': name}, res);
 	}

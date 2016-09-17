@@ -14,7 +14,7 @@ module.exports = {
 					return res.send(JSON.stringify(found));
 				}else {
 					var item = new itemModel({
-						"quantity": 1,
+						"quantity": req.q,
 						"name": req.name
 					});
 
@@ -38,7 +38,7 @@ module.exports = {
 		});
 	},
 	increaseQuantity: function(req, res){
-		itemModel.update({ "name": req.name }, { $inc: { "quantity": 1 }}, function(err, a){
+		itemModel.update({ "name": req.name }, { $inc: { "quantity": req.q }}, function(err, a){
 			if(err){
 				return err;
 			} else{

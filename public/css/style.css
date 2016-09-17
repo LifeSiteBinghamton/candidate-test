@@ -9,13 +9,17 @@ a{
 	float:right;
 }
 
-input#item-input{
+input#item-input, input#item-quantity{
 	height: 50px;
 	border-radius: 35px;
 	border: none;
 	width: 300px;
 	font-size: 1.2em;
 	padding: 0 1.2em;
+}
+
+input#item-quantity{
+	width: 100px;
 }
 
 input#remove-list{
