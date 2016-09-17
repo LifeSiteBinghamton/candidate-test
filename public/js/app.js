@@ -1,5 +1,6 @@
 angular.module('LifeSiteCandidateApp', [
     'ngRoute',
     'routes',
-    'WelcomeController'
+    'WelcomeController',
+    'listController'
 ]);
