@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+  <ul class="todo">
+  <% for(var i=0; i<todos.length; i++) {%>
+    <li class="quote">
+      <span><%= todos[i].name %></span>
+      <span><%= todos[i].todo %></span>
+    </li>
+  <% } %>
+  </ul>
+
+  <form action="/todo" method="POST">
+    <input type="text" placeholder="name" name="name">
+    <input type="text" placeholder="todo" name="todo">
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
