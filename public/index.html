@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="LifeSiteCandidateApp">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<base href="/">
@@ -15,47 +15,19 @@
 	<script src="js/controllers/WelcomeController.js"></script>
 	<script src="js/routes.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/core.js"></script>
 </head>
-<body ng-controller="mainController">
+<body ng-app="LifeSiteCandidateApp" ng-controller="mainController">
 <div class="container">
 
 	<nav class="navbar">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="/">
+			<a class="navbar-brand" href="/#home">
                 <img src="assets/images/lifesitevault.png" width="200" height="50">
             </a>
 		</div>
 		<ul class="nav navbar-nav">
 			<!-- Your Routes Here -->
-			<!-- TODO LIST -->
-        <div id="todo-list" class="row">
-            <div class="col-sm-4 col-sm-offset-4">
-
-                <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div class="checkbox" ng-repeat="todo in todos">
-                    <label>
-                        <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
-                    </label>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- FORM TO CREATE TODOS -->
-        <div id="todo-form" class="row">
-            <div class="col-sm-8 col-sm-offset-2 text-center">
-                <form >
-                    <div class="form-group">
-
-                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                        <input type="text" class="form-control input-lg text-center" placeholder="I have to code" ng-model="formData.text">
-                    </div>
-
-                    <!-- createToDo() WILL CREATE NEW TODOS -->
-                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
-                </form>
-            </div>
-        </div>
 		</ul>
 	</nav>
 
