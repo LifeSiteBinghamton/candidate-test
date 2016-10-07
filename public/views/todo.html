@@ -1,0 +1,24 @@
+<div id="todo-list" class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+        <!-- LOOP OVER THE TODOS IN $scope.todos -->
+        <div class="checkbox" ng-repeat="todo in todos">
+            <label>
+            <button type="submit" class="btn btn-primary btn-sm" ng-click="deleteTodo(todo._id)">Delete</button>&nbsp;{{ todo.text }}
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- FORM TO CREATE TODOS -->
+<div id="todo-form" class="row">
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+        <form method="post">
+            <div class="form-group">
+                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                <input type="text" name="text" class="form-control input-lg text-center" placeholder="I have to code" ng-model="formData.text">
+            </div>
+            <!-- createToDo() WILL CREATE NEW TODOS -->
+            <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">ADD TO LIST</button>
+        </form>
+    </div>
+</div>

@@ -9,9 +9,9 @@ This is the candidate test for LifeSite developers.
 
 ## Getting Started
 1. Install the base npm modules with `npm install`.
-2. Install bower dependencies with `bower install`.
-3. Start up the server with `node server.js`.
-4. View in browser at `http://localhost:8080`.
+5. Install bower dependencies with `bower install`.
+6. Start up the server with `node server.js`.
+7. View in browser at `http://localhost:8080`.
 
 ## Instructions
 * Use NodeJS, Express, Mongo, and Angular to create a CRUD application. It can be anything you want - a list of ToDos, 
