@@ -14,6 +14,8 @@ app.use(express.static(__dirname + '/public')); // set the static files location
 
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use(bodyParser.json());
+
 // routes ==================================================
 require('./app/routes')(app); // pass our application into our routes
 
@@ -24,6 +26,7 @@ var todoSchema = new Schema({
 var Todo = mongoose.model('Todo', todoSchema);
 
 // start app ===============================================
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://sbk041092:sbk041092@ds061325.mlab.com:61325/to-do-list', (err, database) => {
    if (err) return console.log(err) 
 	  	db = database
@@ -46,10 +49,11 @@ app.get('/routes',function(req, res){
 app.post('/routes', function(req, res) {
 
     // create a todo, information comes from AJAX request from Angular
-    Todo.create({
-        text : req.body.text,
-        done : false
-    }, function(err, todo) {
+    var todo = new Todo({
+    	text: req.body.text
+    });
+
+    todo.save(function(err, todo) {
         if (err)
             res.send(err);
 
