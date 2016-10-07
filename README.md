@@ -9,10 +9,7 @@ This is the candidate test for LifeSite developers.
 
 ## Getting Started
 1. Install the base npm modules with `npm install`.
-2. Install the express with `install express --save`.
-3. Install the mongoose with `install mongoose --save`.
-4. Install the body-parser with `install body-parser --save`.
-5. Install bower dependencies for angular with `install bower --save` and `bower install`.
+5. Install bower dependencies with `bower install`.
 6. Start up the server with `node server.js`.
 7. View in browser at `http://localhost:8080`.
 
