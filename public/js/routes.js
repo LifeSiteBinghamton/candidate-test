@@ -1,3 +1,4 @@
+// routing ====================================================
 angular.module('routes', [])
 	.config(['$routeProvider', function ($routeProvider) {
 	    $routeProvider
@@ -9,7 +10,7 @@ angular.module('routes', [])
                 templateUrl: 'views/home.html',
                 controller: 'WelcomeController'
             })
-            .when('/todo',{
+            .when('/routes',{
             	templateUrl: 'views/todo.html',
 
             });

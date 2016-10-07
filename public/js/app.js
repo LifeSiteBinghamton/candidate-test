@@ -4,11 +4,9 @@ var app = angular.module('LifeSiteCandidateApp', [
     'WelcomeController'
 ]);
 
-app.controller('mainController', function($scope, $http) {
+var module = app.controller('mainController', [ '$scope', '$http', 'Todos', function($scope, $http, Todos) {
     $scope.formData = {};
-
-    // when landing on the page, get all todos and show them
-    $http.get('/routes')
+    Todos.get()
         .success(function(data) {
             $scope.todos = data;
             console.log(data);
@@ -42,4 +40,13 @@ app.controller('mainController', function($scope, $http) {
             });
     };
 
-});
+}]);
+
+// defined Todos function ===================================
+module.factory('Todos', ['$http',function($http) {
+	return {
+		get : function() {
+			return $http.get('/routes');
+		}
+	}
+}]);
